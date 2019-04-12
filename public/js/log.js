@@ -98,7 +98,7 @@ $(document).ready(function () {
       }
       else {
         expirationDate = "N/A";
-        dateObtained = "N/A";
+        dateObtained = items[i].when_obtained;
         block1 = "<tr>";
         note = "<td></td>";
       }
@@ -117,7 +117,6 @@ $(document).ready(function () {
   // This function figures out which item we want to delete and then calls
   // deleteItem
   function handleItemDelete() {
-    confirm("Are you sure you want to delete item?");
     var currentItem = $(this).data("id2");
     deleteItem(currentItem);
   }
