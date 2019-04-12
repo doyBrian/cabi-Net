@@ -50,6 +50,7 @@ $(document).ready(function () {
       .then(function () {
         getItems(itemLocationSelect.val());
       });
+      window.location.href = "/log";
   }
 
   getItems(itemLocationSelect.val(), itemFilterSelect.val());
@@ -97,9 +98,15 @@ $(document).ready(function () {
       }
       else {
         expirationDate = "N/A";
-        dateObtained = "N/A";
         block1 = "<tr>";
-        note = "<td></td>";
+        if (dateObtained !== null) {
+          dateObtained = moment(items[i].when_obtained).format('YYYY/MM/DD');
+          note = "<td>Obtained " + moment(dateObtained).startOf('day').fromNow() + "</td>";
+
+        }
+        else 
+          dateObtained = "N/A"; 
+          note = "<td></td>";
       }
 
       logContainer.append(block1
@@ -130,6 +137,8 @@ $(document).ready(function () {
   // This function figures out which item we want to delete and then calls
   // deleteItem
   function handleItemDelete() {
+    if ($.fn.DataTable.isDataTable("#table")) 
+      $('#table').DataTable().clear().destroy();
     var currentItem = $(this).data("id2");
     deleteItem(currentItem);
   }
@@ -137,6 +146,8 @@ $(document).ready(function () {
   // This function figures out which item we want to edit and takes it to the
   // Appropriate url
   function handleItemEdit() {
+    if ($.fn.DataTable.isDataTable("#table")) 
+      $('#table').DataTable().clear().destroy();
     var currentItem = $(this).data("id1");
     window.location.href = "/cms?item_id=" + currentItem;
   }
