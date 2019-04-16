@@ -4,7 +4,7 @@ A web app logger for home items to keep track of pershables, inventory and more.
 ### Deployed App Link
 <a href="https://drive.google.com/file/d/1mrwCmK060H5TdLjL7OJyWVIl63MRYa-h/view">Click for DEMO</a>
 
-https://xxxxx.herokuapp.com/
+https://cabi-net.herokuapp.com/
 
 ### Design Plan
 This project follows the MVC design pattern - uses Node and Express Web Server to query and route data in the app, MySQL for Database and Sequelize for ORM.
